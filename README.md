@@ -1,8 +1,8 @@
 # Análise CPGF 2024 — Transparência nos Gastos com Cartões Corporativos do Governo Federal
 
-Análise exploratória dos gastos com Cartões de Pagamento do Governo Federal (CPGF) em 2024, com 141.048 registros extraídos do Portal da Transparência. O projeto cobre o pipeline completo: coleta de dados, ETL com Python, armazenamento em SQLite e análise visual com 6 gráficos no Jupyter Notebook.
+Análise exploratória dos gastos com Cartões de Pagamento do Governo Federal (CPGF) em 2024, com 141.048 registros extraídos do Portal da Transparência. O projeto cobre o pipeline completo: coleta de dados, ETL com Python, consultas analíticas em SQL e visualizações no Jupyter Notebook.
 
-**Tecnologias:** Python · Pandas · SQLite · Matplotlib · Seaborn · Jupyter
+**Tecnologias:** Python · Pandas · SQL · SQLite · DBeaver · Matplotlib · Seaborn · Jupyter
 
 ---
 
@@ -31,11 +31,9 @@ importar_dados.py (ETL em Python)
         ▼
 cpgf_2024.db (SQLite — 141.048 registros, 15 colunas)
         │
-        ▼
-cpgf_analise.ipynb (Análise exploratória)
-  · Estatísticas descritivas
-  · Verificação de qualidade (duplicatas, valores ausentes)
-  · 6 visualizações com insights documentados
+        ├──▶ consultas_cpgf.sql (10 consultas analíticas via DBeaver)
+        │
+        └──▶ cpgf_analise.ipynb (6 visualizações com insights documentados)
 ```
 
 ---
@@ -79,6 +77,7 @@ Presidência com R$ 1.605/transação — 2,3x acima da média geral. Filtro: ap
 ```
 ├── cpgf_analise.ipynb             # Análise exploratória com 6 visualizações
 ├── importar_dados.py              # ETL: 12 CSVs → SQLite
+├── consultas_cpgf.sql             # 10 consultas SQL (DBeaver)
 ├── grafico_1_orgaos.png           # Top 10 órgãos por gasto
 ├── grafico_2_transacao.png        # Distribuição por tipo de transação
 ├── grafico_3_sazonalidade.png     # Sazonalidade mensal
@@ -130,7 +129,9 @@ jupyter notebook cpgf_analise.ipynb
 |---|---|
 | Python 3.13 | Linguagem principal |
 | Pandas | Manipulação e análise de dados |
+| SQL | Consultas analíticas sobre o banco |
 | SQLite | Armazenamento estruturado |
+| DBeaver | Interface para execução das consultas SQL |
 | Matplotlib | Visualizações estáticas |
 | Seaborn | Paleta de cores e estilo |
 | Jupyter Notebook | Análise exploratória e documentação |
@@ -141,7 +142,8 @@ jupyter notebook cpgf_analise.ipynb
 
 1. **Coleta** — Download dos 12 CSVs mensais do Portal da Transparência
 2. **ETL** — Limpeza, padronização e carga no SQLite (`importar_dados.py`)
-3. **Análise exploratória** — Estatísticas, qualidade dos dados e 6 visualizações com insights (`cpgf_analise.ipynb`)
+3. **Análise SQL** — 10 consultas analíticas no DBeaver (`consultas_cpgf.sql`)
+4. **Análise exploratória** — 6 visualizações com insights no Jupyter (`cpgf_analise.ipynb`)
 
 ---
 
