@@ -40,10 +40,10 @@ def renomear_colunas(df):
     df.columns = df.columns.str.strip()
     return df.rename(columns=mapa)
 
-# ═══════════════════════════════════════════════════════════════════
+# --------------------------------------------------------------------------------
 # BUSCA OS 12 CSVs MENSAIS
 # Procura arquivos que começam com '2024_' e contêm 'CPGF' no nome
-# ═══════════════════════════════════════════════════════════════════
+# --------------------------------------------------------------------------------
 
 arquivos = glob.glob(os.path.join(PASTA_CSV, '**', '*.csv'), recursive=True)
 arquivos = [a for a in arquivos if os.path.basename(a).startswith('2024_') and 'CPGF' in a.upper()]
@@ -54,11 +54,11 @@ if not arquivos:
 
 print(f"{len(arquivos)} arquivo(s) encontrado(s)\n")
 
-# ═══════════════════════════════════════════════════════════════════
+# --------------------------------------------------------------------------------
 # CARGA NO SQLITE (um CSV por vez)
 # O primeiro CSV recria a tabela (replace) e os demais acrescentam o (append).
 # Encoding windows-1252 porque é o padrão dos CSVs do Portal da Transparência.
-# ═══════════════════════════════════════════════════════════════════
+# ---------------------------------------------------------------------------------
 
 conn = sqlite3.connect(BANCO_DB)
 total_inserido = 0
@@ -88,9 +88,9 @@ for i, arquivo in enumerate(sorted(arquivos)):
     except Exception as e:
         print(f"ERRO em {os.path.basename(arquivo)}: {e}")
 
-# ═══════════════════════════════════════════════════════════════════
+# --------------------------------------------------------------------------------
 # VALIDAÇÃO — confirma que os dados foram carregados corretamente
-# ═══════════════════════════════════════════════════════════════════
+# --------------------------------------------------------------------------------
 
 total_db = pd.read_sql("SELECT COUNT(*) as total FROM cpgf", conn).iloc[0, 0]
 amostra  = pd.read_sql(
