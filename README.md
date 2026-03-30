@@ -77,7 +77,7 @@ Presidência com R$ 1.605/transação — 2,3x acima da média geral. Filtro: ap
 ```
 ├── cpgf_analise.ipynb             # Análise exploratória com 6 visualizações
 ├── importar_dados.py              # ETL: 12 CSVs → SQLite
-├── consultas_cpgf.sql             # 10 consultas SQL (DBeaver)
+├── consultas_cpgf.sql             # consultas SQL (DBeaver)
 ├── grafico_1_orgaos.png           # Top 10 órgãos por gasto
 ├── grafico_2_transacao.png        # Distribuição por tipo de transação
 ├── grafico_3_sazonalidade.png     # Sazonalidade mensal
